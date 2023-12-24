@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
 
-def manager(request):
-    response = redirect('/manager/home')
+def view(request):
+    response = redirect('/view/home')
     return response

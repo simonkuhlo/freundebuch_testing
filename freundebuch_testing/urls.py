@@ -24,10 +24,11 @@ from . import redirects
 
 
 urlpatterns = [
-    #path('', redirects.manager, name = 'home'),
+    path('', redirects.view, name = 'home'),
     path('admin/', admin.site.urls),
     path('view/', include('app_read.urls'), name = 'view'),
     path('edit/', include('app_write.urls'), name = 'edit'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
