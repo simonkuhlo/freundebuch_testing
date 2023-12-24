@@ -1,0 +1,27 @@
+/* 
+gs = global standard
+fc = flex-container 
+
+All flex-containers for nesting etc. go here
+*/
+
+.fc{
+    display: flex;
+}
+
+.fc .fc_column{
+    flex-direction: column;
+}
+
+.fc .fc_row{
+    flex-direction: row;
+}
+
+.fc .fc_standard{
+    gap: 5px;
+    padding: 5px;
+}
+
+.fc .fc_center{
+    align-items: center;
+}

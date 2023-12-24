@@ -1,0 +1,12 @@
+.SForm-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.SForm-form_container{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
