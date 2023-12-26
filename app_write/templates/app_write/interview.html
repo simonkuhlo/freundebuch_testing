@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>Interview</h2>
+
+<form action="/search/" method="post">
+{% csrf_token %}
+  
+  <div class = "horizontal-box new_entry-interview">
+
+    {% for question in questions %}
+
+    {% endfor %}
+
+    <div class = "horizontal-box new_entry-interview-controls">
+      <input type="submit" value="Submit!!">
+    </div>
+    
+  </div>
+
+</form>
+
+{% endblock %}
