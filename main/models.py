@@ -1,6 +1,11 @@
 from django.db import models
 
 # Create your models here.
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
 class Interview(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
@@ -11,7 +16,7 @@ class Interview(models.Model):
         return(str(self.name))
     
 class Entry(models.Model):
-    #author = models.ForeignKey(people.Person, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
