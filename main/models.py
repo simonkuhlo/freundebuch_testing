@@ -1,5 +1,4 @@
 from django.db import models
-from people import models as people
 
 # Create your models here.
 class Interview(models.Model):
@@ -12,7 +11,7 @@ class Interview(models.Model):
         return(str(self.name))
     
 class Entry(models.Model):
-    author = models.ForeignKey(people.Person, on_delete=models.SET_NULL, null=True)
+    #author = models.ForeignKey(people.Person, on_delete=models.SET_NULL, null=True)
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
