@@ -1,0 +1,24 @@
+<div class = "horizontal-box new_entry-interview-block">
+    <div class = "horizontal-box new_entry-interview-block-question">
+      <div class = "horizontal-box new_entry-interview-block-question-question">
+
+        <label>
+          {{question.question_value}}
+        </label>
+
+      </div>
+      <div class = "horizontal-box new_entry-interview-block-question-description">
+
+        <label class = "footnote">
+          {{question.description}}
+        </label>
+
+      </div>
+    </div>
+    <div class = "horizontal-box new_entry-interview-block-answer">
+
+      <input type="text" id="{{question.id}}-{{question.name}}" name="{{question.id}}-{{question.name}}" class = "form-field">
+
+    </div>
+  </div>
+  <hr>
