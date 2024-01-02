@@ -8,11 +8,13 @@ This file contains all standard buttons for html styling
 :root {
     --btn_border_color: var(--accent_color_dark);
     --btn_background_color: var(--accent_color);
+
+    --btn_border_thickness: 2px;
 }
 
 .btn{
     padding: 5px;
-    border: 2px solid var(--btn_border_color);
+    border: var(--btn_border_thickness) solid var(--btn_border_color);
     border-bottom: 5px solid var(--btn_border_color);
     background-color: var(--btn_background_color);
     border-radius: 10px;
@@ -22,6 +24,7 @@ This file contains all standard buttons for html styling
 }
 
 .btn:hover {
+    border-bottom-width: var(--btn_border_thickness);
     box-shadow: 0 0 30px 1px rgb(0 0 0 / 15%);
     transition-duration: 0.25s;
 }
