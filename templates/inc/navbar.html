@@ -1,6 +1,10 @@
-<div class="bar">
-    <a href="/">
-        <h1>Home</h1>
-    </a>
+<div class="fc fc_row bar" id="navbar">
+
+    {% include "inc/linkbutton.html" with btn_link="/" btn_text="Home" %}
+
+    {% include "inc/linkbutton.html" with btn_link="/edit" btn_text="Edit" %}
+
+    {% include "inc/linkbutton.html" with btn_link="/view" btn_text="View" %}
+
 </div>
 <hr>

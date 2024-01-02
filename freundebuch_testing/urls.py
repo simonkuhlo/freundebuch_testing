@@ -20,15 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from . import redirects
-
 
 urlpatterns = [
-    path('', redirects.view, name = 'home'),
+    path('', include('main.urls'), name = 'main'),
     path('admin/', admin.site.urls),
-    path('view/', include('app_read.urls'), name = 'view'),
-    path('edit/', include('app_write.urls'), name = 'edit'),
-
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,35 @@
+/* 
+gs = global standard
+
+btn = button
+
+This file contains all standard buttons for html styling
+*/
+:root {
+    --btn_border_color: var(--accent_color_dark);
+    --btn_background_color: var(--accent_color);
+}
+
+.btn{
+    padding: 5px;
+    border: 2px solid var(--btn_border_color);
+    border-bottom: 5px solid var(--btn_border_color);
+    background-color: var(--btn_background_color);
+    border-radius: 10px;
+    transition-duration: 0.25s;
+    height: fit-content;
+}
+
+.btn:hover {
+    box-shadow: 0 0 30px 1px rgb(0 0 0 / 15%);
+    transition-duration: 0.25s;
+}
+
+.btn p{
+    margin: 0px;
+}
+
+.btn a{
+    color: var(--font_color);
+    text-decoration: none;
+}
