@@ -18,7 +18,7 @@
         - [x] CSS Variables
         - [x] URLS
         - [x] Use main app
-    - [x] Reusable buttons
+    - [x] Reuseable buttons
     - [x] Navbar
     - [ ] Styling
         - [x] Font
