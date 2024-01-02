@@ -17,6 +17,7 @@ This file contains all standard buttons for html styling
     background-color: var(--btn_background_color);
     border-radius: 10px;
     transition-duration: 0.25s;
+    width: fit-content;
     height: fit-content;
 }
 
