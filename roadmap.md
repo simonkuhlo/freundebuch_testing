@@ -13,5 +13,13 @@
 
 
 - [ ] Global
-    - [ ] Navbar
+    - [ ] Infrastructure
+        - [x] Global CSS
+        - [x] CSS Variables
+        - [x] URLS
+        - [x] Use main app
+    - [x] Reusable buttons
+    - [x] Navbar
     - [ ] Styling
+        - [x] Font
+        - [ ] 
