@@ -22,4 +22,4 @@
     - [x] Navbar
     - [ ] Styling
         - [x] Font
-        - [ ] 
+        - [x] Background
