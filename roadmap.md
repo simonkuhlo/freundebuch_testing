@@ -1,5 +1,11 @@
 - [ ] New Entry
     - [ ] Process
         - [ ] New Entry Button -> Select Interview / Language
-        - [ ] Select Interview / Language -> Interview Page
-        - [ ] Interview Page -> Entry creation / Success Page
+        - [x] Select Interview / Language -> Interview Page
+        - [x] Interview Page -> Entry creation / Success Page
+
+    - [ ] Functionality
+        - [ ] Select Interview
+        - [ ] Interview
+            - [x] Get all questions for interview
+            - [ ] Submission
