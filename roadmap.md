@@ -8,4 +8,10 @@
         - [ ] Select Interview
         - [ ] Interview
             - [x] Get all questions for interview
-            - [ ] Submission
+  
+    - [ ] Styling
+
+
+- [ ] Global
+    - [ ] Navbar
+    - [ ] Styling
