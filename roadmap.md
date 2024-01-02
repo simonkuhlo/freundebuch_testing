@@ -1,0 +1,5 @@
+- [ ] New Entry
+    - [ ] Process
+        - [ ] New Entry Button -> Select Interview / Language
+        - [ ] Select Interview / Language -> Interview Page
+        - [ ] Interview Page -> Entry creation / Success Page
