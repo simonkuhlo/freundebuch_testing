@@ -13,7 +13,7 @@
 
 
 - [ ] Global
-    - [ ] Infrastructure
+    - [X] Infrastructure
         - [x] Global CSS
         - [x] CSS Variables
         - [x] URLS
