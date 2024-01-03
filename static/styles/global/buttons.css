@@ -15,7 +15,7 @@ This file contains all standard buttons for html styling
 .btn{
     padding: 5px;
     border: var(--btn_border_thickness) solid var(--btn_border_color);
-    border-bottom: 5px solid var(--btn_border_color);
+    border-bottom-width: 5px;
     background-color: var(--btn_background_color);
     border-radius: 10px;
     transition-duration: 0.25s;
@@ -23,10 +23,12 @@ This file contains all standard buttons for html styling
     height: fit-content;
 }
 
-.btn:hover {
+.btn:hover {   
     border-bottom-width: var(--btn_border_thickness);
-    box-shadow: 0 0 30px 1px rgb(0 0 0 / 15%);
     transition-duration: 0.25s;
+
+    box-shadow: 0 0 10px 0.5px var(--accent_color_dark_50);
+
 }
 
 .btn p{

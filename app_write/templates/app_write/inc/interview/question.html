@@ -1,24 +1,28 @@
-<div class = "horizontal-box new_entry-interview-block">
-    <div class = "horizontal-box new_entry-interview-block-question">
-      <div class = "horizontal-box new_entry-interview-block-question-question">
+<div class = "fc fc_column f_question_block">
 
-        <label>
-          {{question.question_value}}
-        </label>
+  <div class = "f_intructions">
 
-      </div>
-      <div class = "horizontal-box new_entry-interview-block-question-description">
+    <div class = "f_question">
 
-        <label class = "footnote">
-          {{question.description}}
-        </label>
-
-      </div>
-    </div>
-    <div class = "horizontal-box new_entry-interview-block-answer">
-
-      <input type="text" id="{{question.id}}-{{question.name}}" name="{{question.id}}-{{question.name}}" class = "form-field">
+      <label>
+        {{question.question_value}}
+      </label>
 
     </div>
+
+    <div class = "f_question_desc">
+
+      <label>
+        {{question.description}}
+      </label>
+
+    </div>
+
   </div>
-  <hr>
+
+  <div class = "">
+
+    <input type="text" id="{{question.id}}-{{question.name}}" name="{{question.id}}-{{question.name}}" class = "f_input_standard">
+
+  </div>
+</div>
