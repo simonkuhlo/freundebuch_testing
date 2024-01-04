@@ -2,8 +2,17 @@
 
 {% block content %}
 
-v Select Language <br>
 
-( v Select Interview )
+
+    <div class = "fc fc_column fc_center sf_box">
+        <h2>Select Language!!</h2>
+        <form action = "/edit/new_entry/" method="post">
+            {% csrf_token %}
+            <div class = "fc fc_column fc_center sf_box">
+                {{form.field1}}
+                <input type="submit" value="Create Entry!">
+            </div>
+        </form>
+    </div>
 
 {% endblock %}

@@ -1,0 +1,31 @@
+
+
+.sf_box{
+    border: 1px solid pink;
+    gap: 20px;
+}
+
+.sf_box input{
+    padding: 5px;
+    border: var(--btn_border_thickness) solid var(--btn_border_color);
+    border-bottom-width: 5px;
+    background-color: var(--btn_background_color);
+    border-radius: 10px;
+    transition-duration: 0.25s;
+}
+
+.sf_box input:hover{
+    border-bottom-width: var(--btn_border_thickness);
+    transition-duration: 0.25s;
+    box-shadow: 0 0 10px 0.5px var(--accent_color_dark_50);
+}
+
+.sf_box select{
+    padding: 5px;
+    border: var(--btn_border_thickness) solid var(--btn_border_color);
+    border-bottom-width: 5px;
+    background-color: var(--accent_color);
+    border-radius: 10px;
+    transition-duration: 0.25s;
+}
+
