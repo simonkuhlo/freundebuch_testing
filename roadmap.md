@@ -1,4 +1,5 @@
-
+Current Goal:
+- [ ] Finish ability to create new entries on user-side
 
 - [ ] New Entry
     - [x] Process
