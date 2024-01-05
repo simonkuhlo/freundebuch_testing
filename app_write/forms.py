@@ -18,23 +18,23 @@ class answer_longtext(forms.ModelForm):
     class Meta:
         model = models.Answer
         fields = ['answer_longtext']
-    labels = {
-                "answer_longtext": ""
-            }
+        labels = {
+                    "answer_longtext": ""
+                }
 
 class answer_image(forms.ModelForm):
     class Meta:
         model = models.Answer
         fields = ['answer_image']
-    labels = {
-        "answer_image": ""
-    }
+        labels = {
+            "answer_image": ""
+        }
 
 
 class answer_boolean(forms.ModelForm):
     class Meta:
         model = models.Answer
         fields = ['answer_boolean']
-    labels = {
-            "answer_boolean": ""
-        }
+        labels = {
+                "answer_boolean": ""
+            }
