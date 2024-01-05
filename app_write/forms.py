@@ -9,7 +9,7 @@ class select_interview(forms.Form):
 class answer_text(forms.ModelForm):
     class Meta:
         model = models.Answer
-        fields = ['answer_text']
+        fields = ['answer_text', "question"]
         labels = {
             "answer_text": ""
         }
@@ -17,7 +17,7 @@ class answer_text(forms.ModelForm):
 class answer_longtext(forms.ModelForm):
     class Meta:
         model = models.Answer
-        fields = ['answer_longtext']
+        fields = ['answer_longtext', "question"]
         labels = {
             "answer_longtext": ""
         }
@@ -25,7 +25,7 @@ class answer_longtext(forms.ModelForm):
 class answer_image(forms.ModelForm):
     class Meta:
         model = models.Answer
-        fields = ['answer_image']
+        fields = ['answer_image', "question"]
         labels = {
             "answer_image": ""
         }
@@ -34,7 +34,7 @@ class answer_image(forms.ModelForm):
 class answer_boolean(forms.ModelForm):
     class Meta:
         model = models.Answer
-        fields = ['answer_boolean']
+        fields = ['answer_boolean', "question"]
         labels = {
             "answer_boolean": ""
         }

@@ -53,8 +53,8 @@ class Answer(models.Model):
 
     answer_text = models.CharField(max_length=500, null=True, blank=True)
     answer_longtext = models.TextField(null=True, blank=True)
-    answer_image = models.ImageField(upload_to="upload/", default="project_manager/no_image.jpg", blank=True)
-    answer_boolean = models.BooleanField()
+    answer_image = models.ImageField(upload_to="upload/", default="no_image.jpg", blank=True)
+    answer_boolean = models.BooleanField(null=True, blank=True)
     
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
