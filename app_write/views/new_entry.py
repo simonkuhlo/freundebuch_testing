@@ -35,7 +35,6 @@ def interview(request, pk):
             case _:
                 return
         questionanswerpairs[question] = answerform
-    print(questionanswerpairs)
 
     ctx = {
         "questionanswerpairs" : questionanswerpairs
