@@ -3,7 +3,7 @@ Current Goal:
 
 
 Next Step:
-- [ ] Dynamic Interview form based on Interview-ID
+- [ ] Form submit process
 
 
 - [ ] New Entry
@@ -13,11 +13,14 @@ Next Step:
         - [x] Interview Page -> Entry creation / Success Page
 
     - [ ] Functionality
-        - [ ] Select Interview
+        - [x] Select Interview
         - [ ] Interview
             - [x] Get all questions for interview
+            - [x] Render Question- answer pairs
+            - [ ] Save Answers in DB
   
     - [ ] Styling
+        - [x] Basic styling
 
 
 - [ ] Global
