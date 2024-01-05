@@ -8,7 +8,6 @@ def select_interview(request):
     
     if request.method == 'POST':
         form = forms.select_interview(request.POST)
-        print(form)
         if form.is_valid():
             selected_object = form.cleaned_data['field1']
             return redirect(f'/edit/new_entry/interview/{selected_object.id}')
@@ -22,8 +21,24 @@ def select_interview(request):
 
 def interview(request, pk):
     question_list = models.Question.objects.filter(interview=pk).order_by('sort_id')
+    questionanswerpairs = {}
+    for question in question_list:
+        match question.type:
+            case "text":
+                answerform = forms.answer_text()
+            case "longtext":
+                answerform = forms.answer_longtext()
+            case "image":
+                answerform = forms.answer_image()
+            case "boolean":
+                answerform = forms.answer_boolean()
+            case _:
+                return
+        questionanswerpairs[question] = answerform
+    print(questionanswerpairs)
+
     ctx = {
-        "questions" : question_list
+        "questionanswerpairs" : questionanswerpairs
         }
     return render(request, 'app_write/interview.html', ctx)
 

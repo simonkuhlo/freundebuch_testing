@@ -1,6 +1,11 @@
 Current Goal:
 - [ ] Finish ability to create new entries on user-side
 
+
+Next Step:
+- [ ] Dynamic Interview form based on Interview-ID
+
+
 - [ ] New Entry
     - [x] Process
         - [x] New Entry Button -> Select Interview / Language

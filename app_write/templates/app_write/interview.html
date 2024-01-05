@@ -10,7 +10,7 @@
   <div class="fc fc_column fc_center">
     <h2>Interview</h2>
     <div class="fc fc_column f_question_list">
-      {% for question in questions %}
+      {% for question, answer in questionanswerpairs.items %}
           {% include 'app_write/inc/interview/question.html' %}
       {% endfor %}
 
