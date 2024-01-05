@@ -19,8 +19,8 @@ class answer_longtext(forms.ModelForm):
         model = models.Answer
         fields = ['answer_longtext']
         labels = {
-                    "answer_longtext": ""
-                }
+            "answer_longtext": ""
+        }
 
 class answer_image(forms.ModelForm):
     class Meta:
@@ -36,5 +36,5 @@ class answer_boolean(forms.ModelForm):
         model = models.Answer
         fields = ['answer_boolean']
         labels = {
-                "answer_boolean": ""
-            }
+            "answer_boolean": ""
+        }

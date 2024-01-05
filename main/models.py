@@ -52,7 +52,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.SET_NULL, null=True)
 
     answer_text = models.CharField(max_length=500, null=True, blank=True)
-    answer_longtext = models.CharField(max_length=500, null=True, blank=True)
+    answer_longtext = models.TextField(null=True, blank=True)
     answer_image = models.ImageField(upload_to="upload/", default="project_manager/no_image.jpg", blank=True)
     answer_boolean = models.BooleanField()
     

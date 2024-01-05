@@ -23,10 +23,27 @@
     border-radius: 5px;
 }
 
+.sf_box textarea{
+    box-sizing:border-box;
+    width: 100%;
+    height: 130px;
+    border-radius: 5px;
+    resize: none;
+}
+
 .sf_box input[type="submit"]:hover{
     border-bottom-width: var(--btn_border_thickness);
     transition-duration: 0.25s;
     box-shadow: 0 0 10px 0.5px var(--accent_color_dark_50);
+}
+
+.sf_box input[type="file"]{
+    border: 2px inset lightgray;
+    box-sizing:border-box;
+    width: 100%;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .sf_box select{
@@ -38,3 +55,12 @@
     transition-duration: 0.25s;
 }
 
+.f_f_question label{
+    font-size: medium;
+}
+
+.f_question_desc label{
+    font-size: small;
+    font-style: italic;
+    color: grey;
+}
