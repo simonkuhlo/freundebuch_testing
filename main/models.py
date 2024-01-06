@@ -60,4 +60,4 @@ class Answer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return(str(self.answer_value))
+        return(str(self.entry))

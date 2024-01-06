@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.forms import modelform_factory
 from main import models
+from . import helpers
 from .. import forms
 
 
@@ -17,43 +19,29 @@ def select_interview(request):
     ctx = {"form" : form,}
     return render(request, 'app_write/select_interview.html', ctx)
 
-
+    
 
 def interview(request, pk):
-    #get all questions
-    question_list = models.Question.objects.filter(interview=pk).order_by('sort_id')
+    questionformpairs = {}
+    for question in models.Question.objects.filter(interview=pk).order_by('sort_id'):
+        fields = helpers.get_fields_for_question_type(question.type)
+        form_class = modelform_factory(models.Answer, fields=fields)
+        form = form_class(
+            request.POST or None,
+            files=request.FILES or None,
+            prefix=f"question-{question.id}"
+        )
+        form.instance.question = question
+        questionformpairs[question] = form
 
-    #check if submission or not
-    if request.method == 'POST':
-        print(request.POST)
-
-    else:
-        questionanswerpairs = {}
-        for question in question_list:
-            
-            #get question ID
-            questionid = {"question" : str(question.id)}
-
-            #get question type & create form
-            match question.type:
-                case "text":
-                    answerform = forms.answer_text(initial=questionid)
-                case "longtext":
-                    answerform = forms.answer_longtext(initial=questionid)
-                case "image":
-                    answerform = forms.answer_image(initial=questionid)
-                case "boolean":
-                    answerform = forms.answer_boolean(initial=questionid)
-                case _:
-                    return
-            
-            #add question and form to dict
-            questionanswerpairs[question] = answerform 
-
-        #context
-        ctx = {
+        if request.method == "POST":
+            print(request.POST)
+            if all([form.is_valid() for form in questionformpairs.values()]):
+                entry = models.Entry.objects.get(id="3")
+                form.instance.entry = entry
+                form.save()
+    ctx = {
             "interview_id" : pk,
-            "questionanswerpairs" : questionanswerpairs
+            "questionformpairs" : questionformpairs
             }
-        return render(request, 'app_write/interview.html', ctx)
-
+    return render(request, 'app_write/interview.html', ctx)

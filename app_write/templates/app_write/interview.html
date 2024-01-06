@@ -11,10 +11,9 @@
     <h2>Interview</h2>
 
       <div class="fc fc_column sf_box">
-        {% for question, answer in questionanswerpairs.items %}
+        {% for question, form in questionformpairs.items %}
             {% include 'app_write/inc/interview/question.html' %}
         {% endfor %}
-        
         <div class = "fc fc_center">
           <input type="submit" value="Submit!!" class = "f_btn">
         </div>
