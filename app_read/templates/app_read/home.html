@@ -2,6 +2,13 @@
 
 {% block content %}
 
+
 Main Page for View app
+{% for entry in entries %}
+
+    {% include "app_read/inc/preview_entry.html"%}
+    hallo
+{% endfor %}
+
 
 {% endblock %}
