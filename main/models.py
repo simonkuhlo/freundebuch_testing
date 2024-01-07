@@ -5,6 +5,9 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return(str(self.name))
 
 class Interview(models.Model):
     name = models.CharField(max_length=100)
@@ -25,7 +28,7 @@ class Entry(models.Model):
         ordering = ['-updated', 'created']
 
     def __str__(self):
-        return(str(self.id))
+        return(str(self.author))
     
 
 question_type_choices = [

@@ -23,6 +23,7 @@ def select_interview(request):
 
 def interview(request, pk):
     questionformpairs = {}
+    question_nr = 0
     for question in models.Question.objects.filter(interview=pk).order_by('sort_id'):
         fields = helpers.get_fields_for_question_type(question.type)
         form_class = modelform_factory(models.Answer, fields=fields)
@@ -31,13 +32,21 @@ def interview(request, pk):
             files=request.FILES or None,
             prefix=f"question-{question.id}"
         )
+        question_nr += 1
         form.instance.question = question
         questionformpairs[question] = form
 
-        if request.method == "POST":
-            print(request.POST)
-            if all([form.is_valid() for form in questionformpairs.values()]):
-                entry = models.Entry.objects.get(id="3")
+    formlist = list(questionformpairs.values())
+
+    if request.method == "POST":
+        if all([form.is_valid() for form in questionformpairs.values()]):
+            
+            author_name = list(questionformpairs.values())[0].cleaned_data['answer_text']
+
+            author = models.Author.objects.create(name = author_name)
+            entry = models.Entry.objects.create(author = author)
+            
+            for form in questionformpairs.values():
                 form.instance.entry = entry
                 form.save()
     ctx = {
