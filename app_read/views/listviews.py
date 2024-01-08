@@ -7,9 +7,18 @@ from main import models
 
 def home(request):
     all_entries = models.Entry.objects.all().order_by('created')
-    
+    entry_dict = {}
+    i = 0
+    for entry in all_entries:
+        bg_color = models.Answer.objects.filter(question=2, entry=entry.id).first().answer_text
+        print(bg_color)
+        entry_dict[i] = {
+            'entry' : entry,
+            'bg_color' : bg_color
+        }
+        i += 1
     ctx = {
-        "entries" : all_entries
+        "all_entries" : entry_dict
     }
-    
+
     return render(request, 'app_read/home.html', ctx)

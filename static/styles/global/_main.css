@@ -10,3 +10,11 @@ body{
     gap: 5px;
 }
 
+p{
+    all: unset;
+}
+
+a{
+    color: unset;
+    text-decoration: unset;
+}

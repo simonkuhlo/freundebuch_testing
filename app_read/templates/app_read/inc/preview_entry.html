@@ -1,5 +1,16 @@
-<br><br>
-Hintergrund = lieblingsfarbe<br>
-Bild<br>
-Name: {{entry.author}}<br>
-Erstellt: {{entry.created}}
+<a href="/view/entry/{{entry_dict.entry.id}}">
+<div class="fc fc_column bd bd_card as_preview_card" style="background-color : {{entry_dict.bg_color}};">
+
+
+    <div class="as_preview_card_image" style="background-color : white;">
+    
+    </div>
+    <P>
+    {{entry_dict.entry.author}}
+    </P>
+    <p>
+    Erstellt: {{entry_dict.entry.created}}
+    </p>
+
+</div>
+</a>
