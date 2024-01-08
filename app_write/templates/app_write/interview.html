@@ -4,15 +4,17 @@
 
 
 
-<form action="/edit/new_entry/interview/{{interview_id}}" method="post">
+<form action="/edit/new_entry/interview/{{language}}+{{interview_id}}" method="post">
 {% csrf_token %}
   
   <div class="fc fc_column fc_center">
     <h2>Interview</h2>
 
       <div class="fc fc_column sf_box">
-        {% for question, form in questionformpairs.items %}
+        {% for dict in questionformpairs.values %}
+
             {% include 'app_write/inc/interview/question.html' %}
+
         {% endfor %}
         <div class = "fc fc_center">
           <input type="submit" value="Submit!!" class = "f_btn">

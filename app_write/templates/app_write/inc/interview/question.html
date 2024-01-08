@@ -5,7 +5,7 @@
     <div class = "f_question">
 
       <label>
-        {{question.question_value}}
+        {{dict.info.question_text}}
       </label>
 
     </div>
@@ -13,7 +13,7 @@
     <div class = "f_question_desc">
 
       <label>
-        {{question.description}}
+        {{dict.info.question_desc}}
       </label>
 
     </div>
@@ -22,10 +22,9 @@
 
   <div class = "">
 
-    {{form.answer_text}}
-    {{form.answer_longtext}}
-    {{form.answer_image}}
-    {{form.answer_boolean}}
+    {{dict.form.answer_text}}
+    {{dict.form.answer_image}}
+    {{dict.form.answer_boolean}}
 
   </div>
 </div>
