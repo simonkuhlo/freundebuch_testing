@@ -3,6 +3,7 @@ Current Goal:
 
 
 Next Step:
+- [ ] Testing
 - [ ] Cleanup of current work
 
 
