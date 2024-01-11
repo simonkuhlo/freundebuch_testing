@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 
 from main import models
-from . import helpers
+from . import new_entry_helpers
 from .. import forms
 
 
@@ -10,7 +10,7 @@ def interview(request, language, interview_id):
     questionformpairs = {}
     question_nr = 0
     for question in models.Question.objects.filter(interview=interview_id).order_by('sort_id'):
-        form_class = helpers.get_form(question)
+        form_class = new_entry_helpers.get_form(question)
         form = form_class(
             request.POST or None,
             files=request.FILES or None,
@@ -19,7 +19,7 @@ def interview(request, language, interview_id):
         
         form.instance.question = question
         
-        question_info = helpers.get_question_info(language, question)
+        question_info = new_entry_helpers.get_question_info(language, question)
         questionformpairs[question_nr] = {"info" : question_info, "form" : form}
         question_nr += 1
 
@@ -29,16 +29,16 @@ def interview(request, language, interview_id):
             if form.is_valid():
                 continue
             else:
-                print("error")
+                # [!] Error page does not exist yet.
+                render(request, 'app_write/new_entry/error')
                                
         author_name = questionformpairs[0]["form"].cleaned_data['answer_text']
-        author = models.Author.objects.create(name = author_name)
-        entry = models.Entry.objects.create(author = author)
+        entry = create_boilerplate(author_name)
         
         for dict in questionformpairs.values():
             form.instance.entry = entry
             form.save()
-            
+       
         # [!] Success page does not exist yet.
         return redirect(f'/edit/new_entry/success')
             
@@ -48,3 +48,12 @@ def interview(request, language, interview_id):
             "questionformpairs" : questionformpairs
             }
     return render(request, 'app_write/interview.html', ctx)
+
+
+
+def create_boilerplate(author_name):
+    # [!] Needs to change later. Check if author already exists, etc.
+    author = models.Author.objects.create(name = author_name)
+    entry = models.Entry.objects.create(author = author)
+    
+    return entry
