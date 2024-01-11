@@ -3,7 +3,7 @@ Current Goal:
 
 
 Next Step:
-- [ ] Form submit process
+- [ ] Cleanup of current work
 
 
 - [ ] New Entry
@@ -13,11 +13,11 @@ Next Step:
         - [x] Interview Page -> Entry creation / Success Page
 
     - [ ] Functionality
-        - [x] Select Interview
-        - [ ] Interview
+        - [x] Select Interview / Language
+        - [x] Interview
             - [x] Get all questions for interview
             - [x] Render Question- answer pairs
-            - [ ] Save Answers in DB
+            - [x] Save Answers in DB
   
     - [ ] Styling
         - [x] Basic styling
