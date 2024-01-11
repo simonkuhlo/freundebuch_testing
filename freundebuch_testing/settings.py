@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'app_read.apps.AppReadConfig',
-    'app_write.apps.AppWriteConfig'
+    'app_write.apps.AppWriteConfig',
+    'colorfield'
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'res/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]

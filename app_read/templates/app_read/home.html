@@ -2,16 +2,15 @@
 
 {% block content %}
 
+{% load static %}
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]preview_card.css' %}">
 
 Main Page for View app <br>
 
 Suche <br>
 
 Box Mit Einträgen:<br>
-<div class="fc fc_row fc_standard">
-
-{% load static %}
-<link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]preview_card.css' %}">
+<div class="fc fc_row fc_standard fc_wrap">
 
 {% for entry_number, entry_dict in all_entries.items %}
 

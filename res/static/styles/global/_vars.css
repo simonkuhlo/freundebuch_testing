@@ -1,0 +1,16 @@
+:root {
+
+    --bg_color: antiquewhite;
+
+    --font_color: black;
+    
+    --main_color: antiquewhite;
+
+    --accent_color: lightblue;
+    --accent_color_dark_value: 0, 140, 255;
+    --accent_color_dark: rgb(0, 140, 255);
+
+
+
+    --border_color: var(--accent_color_dark);
+}

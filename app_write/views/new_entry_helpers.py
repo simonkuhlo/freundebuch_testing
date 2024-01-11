@@ -18,6 +18,7 @@ def get_question_info(language, question):
             question_desc = question.description_en
             
     info_dict = {
+                "question_name" : question.name,
                 "question_text" : question_text,
                 "question_desc" : question_desc
     }    
@@ -34,6 +35,9 @@ def get_fields_and_widgets_for_question_type(question_type):
             widgets = { 'answer_text' : djangoforms.Textarea(attrs={'cols': 80, 'rows': 20}),}
         case "image":
             fields = ['answer_image']
+        case "color":  
+            fields = ['answer_color']
+            widgets = {'answer_color': djangoforms.TextInput(attrs={'type': 'color'}),}
         case "boolean":
             fields = ['answer_boolean']
         case _:

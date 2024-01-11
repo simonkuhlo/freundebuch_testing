@@ -18,7 +18,7 @@ def interview(request, language, interview_id):
         )
         
         form.instance.question = question
-        
+
         question_info = new_entry_helpers.get_question_info(language, question)
         questionformpairs[question_nr] = {"info" : question_info, "form" : form}
         question_nr += 1
@@ -31,12 +31,13 @@ def interview(request, language, interview_id):
             else:
                 # [!] Error page does not exist yet.
                 render(request, 'app_write/new_entry/error')
-                               
-        author_name = questionformpairs[0]["form"].cleaned_data['answer_text']
-        entry = create_boilerplate(author_name)
+        
+        entry = create_boilerplate(questionformpairs, language)
         
         for dict in questionformpairs.values():
+            form = dict["form"]
             form.instance.entry = entry
+            print(form)
             form.save()
        
         # [!] Success page does not exist yet.
@@ -51,9 +52,18 @@ def interview(request, language, interview_id):
 
 
 
-def create_boilerplate(author_name):
-    # [!] Needs to change later. Check if author already exists, etc.
+def create_boilerplate(bigdict, language):
+    #check for crucial questions and get their values
+    for dict in bigdict.values():
+        questioninfo = dict["info"]
+        question_name = questioninfo["question_name"]
+        #add other crucial questions here
+        match question_name:
+            case "name":
+                author_name = dict["form"].cleaned_data['answer_text']
+    
+    # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.create(name = author_name)
     entry = models.Entry.objects.create(author = author)
-    
+    entry.language = language
     return entry

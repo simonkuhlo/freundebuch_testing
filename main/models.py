@@ -1,4 +1,5 @@
 from django.db import models
+import colorfield.fields as colorfield
 
 # Create your models here.
 class Author(models.Model):
@@ -17,12 +18,15 @@ class Interview(models.Model):
     
     def __str__(self):
         return(str(self.name))
+   
     
 class Entry(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
+    language = models.CharField(max_length=50)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    
 
     class Meta:
         ordering = ['-updated', 'created']
@@ -35,6 +39,7 @@ question_type_choices = [
 ("text" , "text"),
 ("longtext" , "longtext"),
 ("image" , "image"),
+("color" , "color"),
 ("boolean" , "boolean"),
 ]
 
@@ -59,6 +64,7 @@ class Answer(models.Model):
     answer_text = models.TextField(null=True, blank=True)
     answer_image = models.ImageField(upload_to="upload/", default="no_image.jpg", blank=True)
     answer_boolean = models.BooleanField(null=True, blank=True)
+    answer_color = colorfield.ColorField(default='#FF0000')
     
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

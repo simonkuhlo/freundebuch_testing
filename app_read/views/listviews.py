@@ -10,7 +10,7 @@ def home(request):
     entry_dict = {}
     i = 0
     for entry in all_entries:
-        bg_color = models.Answer.objects.filter(question__name="bg_color", entry=entry.id).first().answer_text
+        bg_color = models.Answer.objects.filter(question__name="bg_color", entry=entry.id).first().answer_color
         entry_dict[i] = {
             'entry' : entry,
             'bg_color' : bg_color
