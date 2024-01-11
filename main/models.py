@@ -26,7 +26,7 @@ class Entry(models.Model):
 
     class Meta:
         ordering = ['-updated', 'created']
-
+        
     def __str__(self):
         return(str(self.author))
     

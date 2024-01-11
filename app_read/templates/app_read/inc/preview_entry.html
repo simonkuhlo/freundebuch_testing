@@ -1,16 +1,17 @@
 <a href="/view/entry/{{entry_dict.entry.id}}">
-<div class="fc fc_column bd bd_card as_preview_card" style="background-color : {{entry_dict.bg_color}};">
+<div class="fc fc_column bd bd_card as_pc" style="background-color : {{entry_dict.bg_color}};">
 
 
-    <div class="as_preview_card_image" style="background-color : white;">
+    <div class="as_pc_image" style="background-color : white;">
     
     </div>
-    <P>
-    {{entry_dict.entry.author}}
-    </P>
-    <p>
-    Erstellt: {{entry_dict.entry.created}}
-    </p>
-
+    <div class="fc fc_column as_pc_infobox">
+        <P>
+        {{entry_dict.entry.author}}
+        </P>
+        <p class="as_pc_created">
+        {{entry_dict.entry.created|date:"d.m.Y, H:i"}}
+        </p>
+    </div>
 </div>
 </a>

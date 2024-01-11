@@ -11,7 +11,7 @@ body{
 }
 
 p{
-    all: unset;
+    margin: 0px;
 }
 
 a{
