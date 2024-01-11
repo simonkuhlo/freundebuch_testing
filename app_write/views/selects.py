@@ -10,7 +10,9 @@ from .. import forms
 
 #select a Language
 def select_language(request):
+    
     form = forms.select_language(request.POST or None)
+    
     if request.method == 'POST':
         
         if form.is_valid():
