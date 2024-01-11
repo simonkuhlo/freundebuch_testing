@@ -23,7 +23,6 @@ def get_question_info(language, question):
     }    
     return info_dict
 
-
 def get_fields_and_widgets_for_question_type(question_type):
     widgets = {}
     match question_type:
