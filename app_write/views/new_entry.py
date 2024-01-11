@@ -37,7 +37,6 @@ def interview(request, language, interview_id):
         for dict in questionformpairs.values():
             form = dict["form"]
             form.instance.entry = entry
-            print(form)
             form.save()
        
         # [!] Success page does not exist yet.
