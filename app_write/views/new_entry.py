@@ -6,10 +6,10 @@ from . import helpers
 from .. import forms
 
 
-def interview(request, language, interview):
+def interview(request, language, interview_id):
     questionformpairs = {}
     question_nr = 0
-    for question in models.Question.objects.filter(interview=interview).order_by('sort_id'):
+    for question in models.Question.objects.filter(interview=interview_id).order_by('sort_id'):
         form_class = helpers.get_form(question)
         form = form_class(
             request.POST or None,
@@ -21,7 +21,6 @@ def interview(request, language, interview):
         
         question_info = helpers.get_question_info(language, question)
         questionformpairs[question_nr] = {"info" : question_info, "form" : form}
-        
         question_nr += 1
 
     if request.method == "POST":
@@ -34,15 +33,17 @@ def interview(request, language, interview):
                                
         author_name = questionformpairs[0]["form"].cleaned_data['answer_text']
         author = models.Author.objects.create(name = author_name)
-        entry = models.Entry.objects.create(author = author)   
+        entry = models.Entry.objects.create(author = author)
+        
         for dict in questionformpairs.values():
-            
             form.instance.entry = entry
             form.save()
+            
+        # [!] Success page does not exist yet.
         return redirect(f'/edit/new_entry/success')
             
     ctx = {
-            "interview_id" : interview,
+            "interview_id" : interview_id,
             "language" : language,
             "questionformpairs" : questionformpairs
             }
