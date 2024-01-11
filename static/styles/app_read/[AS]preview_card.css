@@ -18,6 +18,13 @@
 
 .as_pc_infobox{
     flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+.as_pc_infobox p{
+    text-align: center;
+    font-size: larger;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .as_pc_created{
