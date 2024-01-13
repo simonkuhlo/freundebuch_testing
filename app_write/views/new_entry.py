@@ -60,9 +60,14 @@ def create_boilerplate(bigdict, language):
         match question_name:
             case "name":
                 author_name = dict["form"].cleaned_data['answer_text']
+            case "fav_color":
+                color = dict["form"].cleaned_data['answer_color']
     
     # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.create(name = author_name)
     entry = models.Entry.objects.create(author = author)
+    
     entry.language = language
+    entry.bg_color = color
+    
     return entry
