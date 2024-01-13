@@ -23,10 +23,11 @@ class Interview(models.Model):
 class Entry(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
+    bg_color = colorfield.ColorField(default='#FF0000')
     language = models.CharField(max_length=50)
+    
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    
 
     class Meta:
         ordering = ['-updated', 'created']
@@ -36,21 +37,25 @@ class Entry(models.Model):
     
 
 question_type_choices = [
-("text" , "text"),
-("longtext" , "longtext"),
-("image" , "image"),
-("color" , "color"),
-("boolean" , "boolean"),
+("answer_text", "text"),
+("answer_longtext", "longtext"),
+("answer_image", "image"),
+("answer_color", "color"),
+("answer_boolean", "boolean"),
 ]
 
 class Question(models.Model):
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
+    
     value_de = models.CharField(max_length=200)
-    value_en = models.CharField(max_length=200)
     description_de = models.CharField(max_length=500)
+    
+    value_en = models.CharField(max_length=200)
     description_en = models.CharField(max_length=500)
+    
     type = models.CharField(max_length=100, choices=question_type_choices) #FileUpload, Interview, AboutMe
+    special = models.BooleanField(default=False) # clarify if special field like name, fav color, etc.
     sort_id = models.SmallIntegerField(null=True, blank=True)
     required = models.BooleanField(default=False)
 
