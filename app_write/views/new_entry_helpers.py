@@ -18,28 +18,30 @@ def get_question_info(language, question):
             question_desc = question.description_en
             
     info_dict = {
-                "question_name" : question.name,
-                "question_text" : question_text,
-                "question_desc" : question_desc
+        "question_name" : question.name,
+        "question_text" : question_text,
+        "question_desc" : question_desc
     }    
     return info_dict
 
 def get_fields_and_widgets_for_question_type(question_type):
+    
     widgets = {}
+    fields = [question_type]
+    
     match question_type:
-        case "text":
-            fields = ['answer_text']
+        case "answer_text":
             widgets = { 'answer_text' : djangoforms.TextInput(),}
-        case "longtext":  
+        case "answer_longtext":  
             fields = ['answer_text']
             widgets = { 'answer_text' : djangoforms.Textarea(attrs={'cols': 80, 'rows': 20}),}
-        case "image":
-            fields = ['answer_image']
-        case "color":  
-            fields = ['answer_color']
-            widgets = {'answer_color': djangoforms.TextInput(attrs={'type': 'color'}),}
-        case "boolean":
-            fields = ['answer_boolean']
-        case _:
-            return
+        #case "answer_color":  
+            #widgets = {'answer_color': djangoforms.TextInput(attrs={'type': 'color'}),}    
+        #case "answer_image":
+            
+        case "answer_boolean":
+            widgets = { 'answer_boolean' : djangoforms.CheckboxInput(),}
+        #case _:
+            #return
+        
     return [fields, widgets]
