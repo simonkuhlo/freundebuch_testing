@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]view_entry.css' %}">
+Hallo!
+
+{% for answer in all_answers%}
+    {{answer}}
+{% endfor %}
+
+{% endblock %}
