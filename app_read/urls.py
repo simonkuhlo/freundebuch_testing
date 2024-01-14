@@ -8,4 +8,5 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.listviews.home, name = "home"),
     path('home', views.views.home, name = "home"),
+    path('entry/<str:entryid>', views.entry.main, name = "entry_view")
 ]
