@@ -1,5 +1,5 @@
-<a href="/view/entry/{{entry_dict.entry.id}}">
-<div class="fc fc_column bd bd_card as_pc" style="background-color : {{entry_dict.bg_color}};">
+<a href="/view/entry/{{entry.id}}">
+<div class="fc fc_column bd bd_card as_pc" style="background-color : {{entry.bg_color}};">
 
 
     <div class="as_pc_image" style="background-color : white;">
@@ -8,12 +8,12 @@
     
     <div class="fc fc_column as_pc_infobox">
         <P class="as_pc_author">
-        {{entry_dict.entry.author}}
+        {{entry.author}}
         </P>
     </div>
 
     <p class="as_pc_created">
-    {{entry_dict.entry.created|date:"d.m.Y, H:i"}}
+    {{entry.created|date:"d.m.Y, H:i"}}
     </p>
 
 </div>

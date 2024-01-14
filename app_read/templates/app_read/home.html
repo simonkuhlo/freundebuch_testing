@@ -12,10 +12,9 @@ Suche <br>
 Box Mit Einträgen:<br>
 <div class="fc fc_row fc_standard fc_wrap">
 
-{% for entry_number, entry_dict in all_entries.items %}
+{% for entry in all_entries %}
 
     {% include "app_read/inc/preview_entry.html" %}
-    {{entry_infos.entry.author}}
 
 {% endfor %}
 </div>
