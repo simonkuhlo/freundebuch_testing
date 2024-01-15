@@ -20,6 +20,9 @@ Next Step:
             - [x] Render Question- answer pairs
             - [x] Save Answers in DB
             - [x] Save uploaded Images
+        - [ ] make "required" fields working
+        - [ ] limit favorite color RGB to light colors only
+        - [ ] limit uploads (prevent exploits)
   
     - [ ] Styling
         - [x] Basic styling
@@ -38,3 +41,6 @@ Next Step:
         - [x] Background
         - [x] Forms
         - [ ] ...
+
+**Ideas**
+- [ ] Show language in Entry-previews
