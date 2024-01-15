@@ -25,6 +25,7 @@ class Entry(models.Model):
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
     bg_color = colorfield.ColorField(default='#FF0000')
     language = models.CharField(max_length=50)
+    visible = models.BooleanField(default = False)
     
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -56,8 +57,13 @@ class Question(models.Model):
     
     type = models.CharField(max_length=100, choices=question_type_choices) #FileUpload, Interview, AboutMe
     special = models.BooleanField(default=False) # clarify if special field like name, fav color, etc.
-    sort_id = models.SmallIntegerField(null=True, blank=True)
+    sort_id = models.SmallIntegerField()
     required = models.BooleanField(default=False)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['interview', 'sort_id'], name='unique_sort_id')
+        ]
 
     def __str__(self):
         return(str(self.name))
