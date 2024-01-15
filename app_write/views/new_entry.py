@@ -65,9 +65,6 @@ def create_boilerplate(bigdict, language):
     
     # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.create(name = author_name)
-    entry = models.Entry.objects.create(author = author)
-    
-    entry.language = language
-    entry.bg_color = color
+    entry = models.Entry.objects.create(author = author, language = language, bg_color = color)
     
     return entry
