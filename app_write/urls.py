@@ -17,3 +17,5 @@ urlpatterns = [
     #select the interview to follow
     #path('new_entry/<str:language>', views.selects.select_interview, name = "new_entry"),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

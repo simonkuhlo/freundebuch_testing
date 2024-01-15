@@ -67,7 +67,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
 
     answer_text = models.TextField(null=True, blank=True)
-    answer_image = models.ImageField(upload_to="upload/", default="no_image.jpg", blank=True)
+    answer_image = models.ImageField(upload_to="upload", default="no_image.jpg", blank=True)
     answer_boolean = models.BooleanField(null=True, blank=True)
     answer_color = colorfield.ColorField(default='#FF0000')
     
