@@ -1,9 +1,9 @@
 Current Goal:
-- [ ] Finish ability to create new entries on user-side
+    - [ ] Entry view
 
 
 Next Step:
-- [ ] Image upload
+    - [ ] Create backend question and answer pairs and render thwm in frontend
 
 
 
@@ -19,6 +19,7 @@ Next Step:
             - [x] Get all questions for interview
             - [x] Render Question- answer pairs
             - [x] Save Answers in DB
+            - [x] Save uploaded Images
   
     - [ ] Styling
         - [x] Basic styling
