@@ -6,8 +6,11 @@
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]view_entry.css' %}">
 Hallo!
 
-{% for answer in all_answers%}
-    {{answer}}
+{% for sort_id, item_info in item_dict.items %}
+    <br>
+    {{item_info.question}}?<br>
+    {{item_info.answer}}<br>
+    <br>
 {% endfor %}
 
 {% endblock %}
