@@ -4,7 +4,7 @@
 
 
 
-<form action="/edit/new_entry/interview/{{language}}+{{interview_id}}" method="post">
+<form action="/edit/new_entry/interview/{{language}}+{{interview_id}}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
   
   <div class="fc fc_column fc_center">
