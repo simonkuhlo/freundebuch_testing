@@ -2,7 +2,8 @@
 
 {% block content %}
 
-
+{% load static %}
+<script  type="text/javascript" src="{% static "colorfield/jscolor/jscolor.min.js" %}"></script>
 
 <form action="/edit/new_entry/interview/{{language}}+{{interview_id}}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
