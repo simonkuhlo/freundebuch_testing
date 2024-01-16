@@ -27,8 +27,17 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.as_pc_created{
+.as_pc_footer{
     margin-top: auto;
+}
+
+.as_pc_language{
+    width: fit-content;
+    margin-right: auto;
+}
+
+.as_pc_created{
+    width: fit-content;
     margin-left: auto;
     font-style: italic;
 }

@@ -33,8 +33,10 @@ Next Step:
   - [ ] Preview/List
     - [x] Basic list of all entries
     - [x] Add favourite color as card background
-    - [ ] Add Language to preview
-    - [ ] Only display entry if visible = true
+    - [x] Add Language to preview
+    - [x] Only display entry if visible = true
+    - [ ] Render Image
+    - [ ] Basic Styling
 
   - [ ] Entry
     - [x] Create backend question and answer pairs and render them in frontend
