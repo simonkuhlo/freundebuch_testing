@@ -1,9 +1,9 @@
 Current Goal:
-    - [ ] Entry view
+    - [ ] Finish Entry view
 
 
 Next Step:
-    - [ ] Create backend question and answer pairs and render them in frontend
+    - [ ] Add language to preview
 
 
 
@@ -57,6 +57,3 @@ Next Step:
         - [x] Background
         - [x] Forms
         - [ ] ...
-
-**Ideas**
-- [ ] Show language in Entry-previews
