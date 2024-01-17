@@ -32,7 +32,7 @@ def interview(request, language, interview_id):
                 # [!] Error page does not exist yet.
                 render(request, 'app_write/new_entry/error')
         
-        entry = create_boilerplate(questionformpairs, language)
+        entry = create_boilerplate(questionformpairs, language, interview_id)
         
         for dict in questionformpairs.values():
             form = dict["form"]
@@ -51,7 +51,7 @@ def interview(request, language, interview_id):
 
 
 
-def create_boilerplate(bigdict, language):
+def create_boilerplate(bigdict, language, interview_id):
     #check for crucial questions and get their values
     for dict in bigdict.values():
         questioninfo = dict["info"]
@@ -65,6 +65,8 @@ def create_boilerplate(bigdict, language):
     
     # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.create(name = author_name)
-    entry = models.Entry.objects.create(author = author, language = language, bg_color = color)
+    interview = models.Interview.objects.get(id = interview_id)
+    bg_color = new_entry_helpers.normalize_color(color)
+    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview)
     
     return entry

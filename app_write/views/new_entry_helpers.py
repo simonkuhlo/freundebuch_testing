@@ -1,5 +1,6 @@
 from django import forms as djangoforms
 from django.forms import modelform_factory
+import numpy as np
 from main import models
 
 
@@ -45,3 +46,22 @@ def get_fields_and_widgets_for_question_type(question_type):
             #return
         
     return [fields, widgets]
+
+
+def normalize_color(rgb_value):
+    color_range = 100
+    rgb_center = (255, 255, 255)
+    
+    x, y, z = np.array(rgb_value) - np.array(rgb_center)
+    distance = np.sqrt(x**2 + y**2 + z**2)
+    if distance <= color_range:
+        return rgb_value
+    else:
+        x = round(rgb_center[0] + color_range * x / distance)
+        y = round(rgb_center[1] + color_range * y / distance)
+        z = round(rgb_center[2] + color_range * z / distance)
+        new_rgb = (x, y, z)
+        print(new_rgb)
+        return new_rgb
+
+
