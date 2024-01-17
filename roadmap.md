@@ -1,9 +1,9 @@
 Current Goal:
-    - [ ] Entry view
+    - [ ] Finish Entry view
 
 
 Next Step:
-    - [ ] Create backend question and answer pairs and render thwm in frontend
+    - [ ] Add language to preview
 
 
 
@@ -21,12 +21,30 @@ Next Step:
             - [x] Save Answers in DB
             - [x] Save uploaded Images
         - [ ] make "required" fields working
-        - [ ] limit favorite color RGB to light colors only
+        - [ ] limit favourite color RGB to light colors only
         - [ ] limit uploads (prevent exploits)
+        - [ ] Add Success Page
+        - [ ] Add Error Page
   
     - [ ] Styling
         - [x] Basic styling
 
+- [ ] View Entry
+  - [ ] Preview/List
+    - [x] Basic list of all entries
+    - [x] Add favourite color as card background
+    - [x] Add Language to preview
+    - [x] Only display entry if visible = true
+    - [ ] Render Image
+    - [ ] Basic Styling
+
+  - [ ] Entry
+    - [x] Create backend question and answer pairs and render them in frontend
+    - [ ] Display Author name as heading
+    - [ ] Render uploaded Image
+    - [ ] Decide what to display next to the image
+
+  - [ ] Styling
 
 - [ ] Global
     - [X] Infrastructure
@@ -41,6 +59,3 @@ Next Step:
         - [x] Background
         - [x] Forms
         - [ ] ...
-
-**Ideas**
-- [ ] Show language in Entry-previews

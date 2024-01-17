@@ -10,7 +10,8 @@ def home(request):
     entry_list = []
     i = 0
     for entry in all_entries:
-        entry_list.append(entry)
+        if entry.visible == True:
+            entry_list.append(entry)
     ctx = {
         "all_entries" : entry_list
     }
