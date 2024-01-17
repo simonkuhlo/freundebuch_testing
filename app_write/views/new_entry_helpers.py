@@ -48,11 +48,14 @@ def get_fields_and_widgets_for_question_type(question_type):
     return [fields, widgets]
 
 
-def normalize_color(rgb_value):
-    color_range = 100
+def normalize_color(color_str):
+    color = color_str.replace("rgb(", "").replace(")", "")
+    rgb_value = color.split(",")
+    
+    color_range = 150
     rgb_center = (255, 255, 255)
     
-    x, y, z = np.array(rgb_value) - np.array(rgb_center)
+    x, y, z = np.array(rgb_value, dtype=int) - np.array(rgb_center)
     distance = np.sqrt(x**2 + y**2 + z**2)
     if distance <= color_range:
         return rgb_value
@@ -60,7 +63,7 @@ def normalize_color(rgb_value):
         x = round(rgb_center[0] + color_range * x / distance)
         y = round(rgb_center[1] + color_range * y / distance)
         z = round(rgb_center[2] + color_range * z / distance)
-        new_rgb = (x, y, z)
+        new_rgb = f"rgb({x}, {y}, {z})"
         print(new_rgb)
         return new_rgb
 

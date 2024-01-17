@@ -3,7 +3,7 @@ Current Goal:
 
 
 Next Step:
-    - [ ] Add language to preview
+
 
 
 
