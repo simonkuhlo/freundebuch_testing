@@ -21,7 +21,7 @@ Next Step:
             - [x] Save Answers in DB
             - [x] Save uploaded Images
         - [ ] make "required" fields working
-        - [ ] limit favourite color RGB to light colors only
+        - [x] limit favourite color RGB to light colors only
         - [ ] limit uploads (prevent exploits)
         - [ ] Add Success Page
         - [ ] Add Error Page
