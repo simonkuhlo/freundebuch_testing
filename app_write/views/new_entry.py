@@ -62,11 +62,13 @@ def create_boilerplate(bigdict, language, interview_id):
                 author_name = dict["form"].cleaned_data['answer_text']
             case "fav_color":
                 color = dict["form"].cleaned_data['answer_color']
+            case "profile_picture":
+                preview_image = dict["form"].cleaned_data['answer_image']
     
     # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.create(name = author_name)
     interview = models.Interview.objects.get(id = interview_id)
     bg_color = new_entry_helpers.normalize_color(color)
-    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview)
+    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
     
     return entry

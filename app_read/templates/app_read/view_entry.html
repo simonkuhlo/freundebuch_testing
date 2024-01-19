@@ -6,11 +6,13 @@
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]view_entry.css' %}">
 Hallo!
 
-{% for sort_id, item_info in item_dict.items %}
-    <br>
-    {{item_info.question}}?<br>
-    {{item_info.answer}}<br>
-    <br>
+<img src="{{ profile_picture.url }}" alt="...">
+
+
+{% for sort_id, answer_info in normal_answers.items %}
+
+    {% include "app_read/inc/view_entry/normal_answer.html" %}
+
 {% endfor %}
 
 {% endblock %}

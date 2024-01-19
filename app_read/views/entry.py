@@ -6,24 +6,29 @@ def main(request, entryid):
     entry = models.Entry.objects.get(id = entryid)
     language = entry.language
     all_answers = models.Answer.objects.filter(entry = entryid)
+
+
     
     #normal questions and answers
-    item_dict = {} 
+    normal_answers = {} 
+    profile_picture = None
+
     for answer in all_answers:
         
         question = models.Question.objects.get(id = answer.question.id)
         if question.special == True:
+            if question.name == "profile_picture":
+                profile_picture = answer.answer_image
             continue
 
         if question.type not in ["answer_text", "answer_longtext"]:
             continue
- 
+
         match language:
             case "de":
                 question_value = question.value_de
             case "en":
                 question_value = question.value_en
-        
         answer_text = answer.answer_text    
 
         item_info = {
@@ -31,10 +36,12 @@ def main(request, entryid):
             "answer" : answer_text
         }
             
-        item_dict[question.sort_id] = item_info
+        normal_answers[question.sort_id] = item_info
 
-    item_dict = dict(sorted(item_dict.items()))
-    print(item_dict)
-    ctx = { "item_dict" : item_dict}
+    normal_answers = dict(sorted(normal_answers.items()))
+    ctx = { 
+        "profile_picture" : profile_picture,
+        "normal_answers" : normal_answers
+        }
     
     return render(request, 'app_read/view_entry.html', ctx)

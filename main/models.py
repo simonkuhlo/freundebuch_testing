@@ -23,6 +23,7 @@ class Interview(models.Model):
 class Entry(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
+    preview_image = models.ImageField(upload_to="upload", default="no_image.webp", blank=True)
     bg_color = colorfield.ColorField(default='#FF0000')
     language = models.CharField(max_length=50)
     visible = models.BooleanField(default = False)
