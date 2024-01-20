@@ -58,7 +58,7 @@ def normalize_color(color_str):
     x, y, z = np.array(rgb_value, dtype=int) - np.array(rgb_center)
     distance = np.sqrt(x**2 + y**2 + z**2)
     if distance <= color_range:
-        return rgb_value
+        return color_str
     else:
         x = round(rgb_center[0] + color_range * x / distance)
         y = round(rgb_center[1] + color_range * y / distance)
