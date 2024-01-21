@@ -52,7 +52,7 @@ def normalize_color(color_str):
     color = color_str.replace("rgb(", "").replace(")", "")#format
     rgb_value = color.split(",")#format
     
-    color_range = 120 #je niedriger, desto heller / farbloser
+    color_range = 100 #je niedriger, desto heller / farbloser
     rgb_center = (255, 255, 255) #mittelpunkt farbbereich
     
     x, y, z = np.array(rgb_value, dtype=int) - np.array(rgb_center)
