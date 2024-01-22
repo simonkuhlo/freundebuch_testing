@@ -29,14 +29,9 @@ def get_fields_and_widgets_for_question_type(question_type):
         case "answer_longtext":  
             fields = ['answer_text']
             widgets = { 'answer_text' : djangoforms.Textarea(attrs={'cols': 80, 'rows': 20}),}
-        #case "answer_color":  
-            #widgets = {'answer_color': djangoforms.TextInput(attrs={'type': 'color'}),}    
-        #case "answer_image":
-            
         case "answer_boolean":
             widgets = { 'answer_boolean' : djangoforms.CheckboxInput(),}
-        #case _:
-            #return
+
         
     return [fields, widgets]
 

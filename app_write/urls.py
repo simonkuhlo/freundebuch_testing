@@ -8,9 +8,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.views.home, name = "home"),
     #start a new entry by selecting the language
-    path('new_entry/', views.selects.select_language, name = "new_entry"),
+    path('new_entry/', views.selects.select_language, name = "create_author"),
+    path('new_entry/<str:language>/create_author', views.new_entry.create_author, name = "new_entry"),
     #Interview form
-    path('new_entry/interview/<str:language>+<str:interview_id>', views.new_entry.interview, name = "new_entry"),
+    path('new_entry/<str:language>/<author_id>/<str:interview_id>', views.new_entry.interview, name = "new_entry"),
     
     
     

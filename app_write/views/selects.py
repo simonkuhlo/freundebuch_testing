@@ -18,7 +18,7 @@ def select_language(request):
         if form.is_valid():
             language = form.cleaned_data['field']
             # [!] Needs improvement. '+3' stands for Interview with ID 3. Make more dynamic for future.
-            return redirect(f'/edit/new_entry/interview/{language}+3')
+            return redirect(f'/edit/new_entry/{language}/create_author')
         else:
             return redirect(f'/edit/error')
 

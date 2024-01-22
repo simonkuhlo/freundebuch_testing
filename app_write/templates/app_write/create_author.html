@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+    <div class = "fc fc_column fc_center">
+        <h2>{{title}}</h2>
+        <form action = "{{submit_url}}" method="post">
+            {% csrf_token %}
+            <div class = "fc fc_column fc_center sf_box">
+                {{form}}
+                <input type="submit" value="->">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

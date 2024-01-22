@@ -23,6 +23,7 @@ Next Step:
         - [x] make "required" fields working
         - [x] limit favourite color RGB to light colors only
         - [ ] limit uploads (prevent exploits)
+        - [ ] Add confirmation email
         - [ ] Add Success Page
         - [ ] Add Error Page
   
@@ -35,7 +36,7 @@ Next Step:
     - [x] Add favourite color as card background
     - [x] Add Language to preview
     - [x] Only display entry if visible = true
-    - [ ] Render Image
+    - [x] Render Image
     - [ ] Basic Styling
 
   - [ ] Entry

@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 
-
 from main import models
 from . import new_entry_helpers
 from .. import forms
 
 
-def interview(request, language, interview_id):
+def interview(request, language, interview_id, author_id):
     questionformpairs = {}
     question_nr = 0
     for question in models.Question.objects.filter(interview=interview_id).order_by('sort_id'):
@@ -48,6 +47,28 @@ def interview(request, language, interview_id):
             "questionformpairs" : questionformpairs
             }
     return render(request, 'app_write/interview.html', ctx)
+
+def create_author(request, language):
+    
+    form = forms.create_author(request.POST or None)
+    
+    if request.method == 'POST':
+        
+        if form.is_valid():
+            instance = form.save()
+            # Get the 'next' parameter from the request
+            next_url = request.get_full_path().replace("/create_author", "")
+            print(next_url)
+            return redirect(f'{next_url}/{instance.id}/3')
+        
+        else:
+
+            return redirect(f'/edit/error')
+
+    ctx = {
+            "form" : form,
+        }
+    return render(request, 'app_write/create_author.html', ctx)
 
 
 
