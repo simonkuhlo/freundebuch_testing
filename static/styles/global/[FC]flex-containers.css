@@ -30,3 +30,7 @@ All flex-containers for nesting etc. go here
     align-items: center;
     justify-content: center;
 }
+
+.fc_center1{
+    justify-content: center;
+}
