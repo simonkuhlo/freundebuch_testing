@@ -3,27 +3,20 @@ from django.forms import modelform_factory
 import numpy as np
 from main import models
 
+class RequiredForm(djangoforms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(RequiredForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
 
 def get_form(question):
     fields_and_widgets = get_fields_and_widgets_for_question_type(question.type)
-    form_class = modelform_factory(models.Answer, fields=fields_and_widgets[0], widgets=fields_and_widgets[1])
-    return form_class  
 
-def get_question_info(language, question):
-    match language:
-        case "de" : 
-            question_text = question.value_de
-            question_desc = question.description_de
-        case "en" : 
-            question_text = question.value_en
-            question_desc = question.description_en
-            
-    info_dict = {
-        "question_name" : question.name,
-        "question_text" : question_text,
-        "question_desc" : question_desc
-    }    
-    return info_dict
+    if question.required == True:
+        form_class = modelform_factory(models.Answer, form=RequiredForm, fields=fields_and_widgets[0], widgets=fields_and_widgets[1])
+    else:
+        form_class = modelform_factory(models.Answer, fields=fields_and_widgets[0], widgets=fields_and_widgets[1])
+    return form_class 
 
 def get_fields_and_widgets_for_question_type(question_type):
     
@@ -46,6 +39,26 @@ def get_fields_and_widgets_for_question_type(question_type):
             #return
         
     return [fields, widgets]
+
+
+
+def get_question_info(language, question):
+    match language:
+        case "de" : 
+            question_text = question.value_de
+            question_desc = question.description_de
+        case "en" : 
+            question_text = question.value_en
+            question_desc = question.description_en
+            
+    info_dict = {
+        "question_name" : question.name,
+        "question_text" : question_text,
+        "question_desc" : question_desc
+    }    
+    return info_dict
+
+
 
 
 def normalize_color(color_str):

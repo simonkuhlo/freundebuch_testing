@@ -20,7 +20,7 @@ Next Step:
             - [x] Render Question- answer pairs
             - [x] Save Answers in DB
             - [x] Save uploaded Images
-        - [ ] make "required" fields working
+        - [x] make "required" fields working
         - [x] limit favourite color RGB to light colors only
         - [ ] limit uploads (prevent exploits)
         - [ ] Add Success Page

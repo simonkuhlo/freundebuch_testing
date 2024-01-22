@@ -4,7 +4,7 @@ import colorfield.fields as colorfield
 # Create your models here.
 class Author(models.Model):
     name = models.CharField(max_length=100)
-
+    email = models.EmailField(max_length=254)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
@@ -64,7 +64,7 @@ class Question(models.Model):
     
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['interview', 'sort_id'], name='unique_sort_id')
+            models.UniqueConstraint(fields=['interview', 'sort_id', 'name'], name='unique_fields')
         ]
 
     def __str__(self):
