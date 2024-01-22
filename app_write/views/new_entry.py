@@ -5,10 +5,10 @@ from . import new_entry_helpers
 from .. import forms
 
 
-def interview(request, language, interview_id, author_id):
+def interview(request, language, author, interview):
     questionformpairs = {}
     question_nr = 0
-    for question in models.Question.objects.filter(interview=interview_id).order_by('sort_id'):
+    for question in models.Question.objects.filter(interview=interview).order_by('sort_id'):
         form_class = new_entry_helpers.get_form(question)
         form = form_class(
             request.POST or None,
@@ -31,7 +31,7 @@ def interview(request, language, interview_id, author_id):
                 # [!] Error page does not exist yet.
                 render(request, 'app_write/new_entry/error')
         
-        entry = create_boilerplate(questionformpairs, language, interview_id)
+        entry = create_boilerplate(questionformpairs, language, author, interview)
         
         for dict in questionformpairs.values():
             form = dict["form"]
@@ -42,7 +42,7 @@ def interview(request, language, interview_id, author_id):
         return redirect(f'/edit/new_entry/success')
             
     ctx = {
-            "interview_id" : interview_id,
+            "interview_id" : interview,
             "language" : language,
             "questionformpairs" : questionformpairs
             }
@@ -59,7 +59,7 @@ def create_author(request, language):
             # Get the 'next' parameter from the request
             next_url = request.get_full_path().replace("/create_author", "")
             print(next_url)
-            return redirect(f'{next_url}/{instance.id}/3')
+            return redirect(f'{next_url}/author={instance.id}+interview=3')
         
         else:
 
@@ -72,7 +72,7 @@ def create_author(request, language):
 
 
 
-def create_boilerplate(bigdict, language, interview_id):
+def create_boilerplate(bigdict, language, autohor_id, interview_id):
     #check for crucial questions and get their values
     for dict in bigdict.values():
         questioninfo = dict["info"]
@@ -87,7 +87,7 @@ def create_boilerplate(bigdict, language, interview_id):
                 preview_image = dict["form"].cleaned_data['answer_image']
     
     # [!] Needs additions later. Check if author already exists, etc.
-    author = models.Author.objects.create(name = author_name)
+    author = models.Author.objects.get(id = autohor_id)
     interview = models.Interview.objects.get(id = interview_id)
     bg_color = new_entry_helpers.normalize_color(color)
     entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
