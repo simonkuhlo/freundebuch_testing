@@ -1,7 +1,11 @@
 from django import forms as djangoforms
 from django.forms import modelform_factory
+from django.core.mail import send_mail
+import string
+import random
 import numpy as np
 from main import models
+from .. import models as localmodels
 
 class RequiredForm(djangoforms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -53,7 +57,48 @@ def get_question_info(language, question):
     }    
     return info_dict
 
+def create_boilerplate(bigdict, language, autohor_id, interview_id):
+    #check for crucial questions and get their values
+    for dict in bigdict.values():
+        questioninfo = dict["info"]
+        question_name = questioninfo["question_name"]
+        #add other crucial questions here
+        match question_name:
+            case "name":
+                author_name = dict["form"].cleaned_data['answer_text']
+            case "fav_color":
+                color = dict["form"].cleaned_data['answer_color']
+            case "profile_picture":
+                preview_image = dict["form"].cleaned_data['answer_image']
+    
+    # [!] Needs additions later. Check if author already exists, etc.
+    author = models.Author.objects.get(id = autohor_id)
+    interview = models.Interview.objects.get(id = interview_id)
+    bg_color = normalize_color(color)
+    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
+    send_confirmation_email(author, language)
+    return entry
 
+def send_confirmation_email(author, language):
+    confirmation_link = get_random_str(15)
+    localmodels.ConfirmLink.objects.create(confirmation_string = confirmation_link, author = author)
+    subject = "Simons Freundebuch - confirmation"
+    message = confirmation_link
+    from_mail = "freundebuch@simonkuhlo.de"
+    to_mail = author.email
+    match language:
+        case "de":
+            message = f"Hi!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
+        case "en":
+            message = f"Hi!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
+    print("test!")
+    send_mail(subject, message, from_mail, [to_mail], fail_silently=False,)
+
+
+def get_random_str(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
 
 
 def normalize_color(color_str):

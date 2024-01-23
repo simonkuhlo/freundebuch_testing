@@ -31,7 +31,7 @@ def interview(request, language, author, interview):
                 # [!] Error page does not exist yet.
                 render(request, 'app_write/new_entry/error')
         
-        entry = create_boilerplate(questionformpairs, language, author, interview)
+        entry = new_entry_helpers.create_boilerplate(questionformpairs, language, author, interview)
         
         for dict in questionformpairs.values():
             form = dict["form"]
@@ -69,27 +69,3 @@ def create_author(request, language):
             "form" : form,
         }
     return render(request, 'app_write/create_author.html', ctx)
-
-
-
-def create_boilerplate(bigdict, language, autohor_id, interview_id):
-    #check for crucial questions and get their values
-    for dict in bigdict.values():
-        questioninfo = dict["info"]
-        question_name = questioninfo["question_name"]
-        #add other crucial questions here
-        match question_name:
-            case "name":
-                author_name = dict["form"].cleaned_data['answer_text']
-            case "fav_color":
-                color = dict["form"].cleaned_data['answer_color']
-            case "profile_picture":
-                preview_image = dict["form"].cleaned_data['answer_image']
-    
-    # [!] Needs additions later. Check if author already exists, etc.
-    author = models.Author.objects.get(id = autohor_id)
-    interview = models.Interview.objects.get(id = interview_id)
-    bg_color = new_entry_helpers.normalize_color(color)
-    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
-    
-    return entry
