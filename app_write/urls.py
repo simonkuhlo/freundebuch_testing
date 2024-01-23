@@ -12,11 +12,10 @@ urlpatterns = [
     path('new_entry/<str:language>/create_author', views.new_entry.create_author, name = "new_entry"),
     #Interview form
     path('new_entry/<str:language>/author=<str:author>+interview=<str:interview>', views.new_entry.interview, name = "new_entry"),
+
+    path('new_entry/auth/<str:auth_str>', views.auth.check_auth, name = "auth"),
     
-    
-    
-    #select the interview to follow
-    #path('new_entry/<str:language>', views.selects.select_interview, name = "new_entry"),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

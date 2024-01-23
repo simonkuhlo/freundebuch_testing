@@ -37,12 +37,12 @@ Next Step:
     - [x] Add Language to preview
     - [x] Only display entry if visible = true
     - [x] Render Image
-    - [ ] Basic Styling
+    - [x] Basic Styling
 
   - [ ] Entry
     - [x] Create backend question and answer pairs and render them in frontend
     - [ ] Display Author name as heading
-    - [ ] Render uploaded Image
+    - [x] Render uploaded Image
     - [ ] Decide what to display next to the image
 
   - [ ] Styling

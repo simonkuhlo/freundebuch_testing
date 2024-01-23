@@ -76,12 +76,12 @@ def create_boilerplate(bigdict, language, autohor_id, interview_id):
     interview = models.Interview.objects.get(id = interview_id)
     bg_color = normalize_color(color)
     entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
-    send_confirmation_email(author, language)
+    send_confirmation_email(entry, author, language)
     return entry
 
-def send_confirmation_email(author, language):
+def send_confirmation_email(entry, author, language):
     confirmation_link = get_random_str(15)
-    localmodels.ConfirmLink.objects.create(confirmation_string = confirmation_link, author = author)
+    localmodels.ConfirmLink.objects.create(confirmation_string = confirmation_link, entry = entry)
     subject = "Simons Freundebuch - confirmation"
     message = confirmation_link
     from_mail = "freundebuch@simonkuhlo.de"
