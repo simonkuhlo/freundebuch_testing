@@ -23,6 +23,7 @@ This file contains all standard buttons for html styling
     height: fit-content;
 }
 
+
 .btn:hover {   
     border-bottom-width: var(--btn_border_thickness);
     transition-duration: 0.25s;

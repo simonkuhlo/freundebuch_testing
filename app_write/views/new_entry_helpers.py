@@ -80,18 +80,18 @@ def create_boilerplate(bigdict, language, autohor_id, interview_id):
     return entry
 
 def send_confirmation_email(entry, author, language):
-    confirmation_link = get_random_str(15)
-    localmodels.ConfirmLink.objects.create(confirmation_string = confirmation_link, entry = entry)
+    random_str = get_random_str(15)
+    confirmation_link = f"http://localhost:8000/edit/new_entry/auth/{random_str}"
+    localmodels.ConfirmLink.objects.create(confirmation_string = random_str, entry = entry)
     subject = "Simons Freundebuch - confirmation"
     message = confirmation_link
     from_mail = "freundebuch@simonkuhlo.de"
     to_mail = author.email
     match language:
         case "de":
-            message = f"Hi!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
+            message = f"Hallo, {author.name}!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
         case "en":
-            message = f"Hi!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
-    print("test!")
+            message = f"Hey, {author.name}!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
     send_mail(subject, message, from_mail, [to_mail], fail_silently=False,)
 
 
