@@ -85,3 +85,9 @@ class Answer(models.Model):
     
     def __str__(self):
         return(str(self.entry))
+
+class SystemMessage(models.Model):
+    name = models.CharField(max_length=100)
+
+    value_en = models.TextField()
+    value_de = models.TextField()
