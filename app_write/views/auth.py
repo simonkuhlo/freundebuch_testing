@@ -14,8 +14,8 @@ def check_auth(request, auth_str):
         return render(request, 'app_write/auth/error.html')
 
     
-    entry = mainmodels.Entry.objects.get(id = model.entry.id)
-    print(entry)
+    entry = model.entry
+
     entry.visible = True
     entry.save()
 
