@@ -1,6 +1,8 @@
 from django import forms as djangoforms
 from django.forms import modelform_factory
+from django.urls import reverse
 from django.core.mail import send_mail
+from django.conf import settings
 import string
 import random
 import numpy as np
@@ -81,11 +83,11 @@ def create_boilerplate(bigdict, language, autohor_id, interview_id):
 
 def send_confirmation_email(entry, author, language):
     random_str = get_random_str(15)
-    confirmation_link = f"http://localhost:8000/edit/new_entry/auth/{random_str}"
+    confirmation_link = reverse("edit.new_entry.auth", kwargs={"auth_str":random_str,"lang":language})
     localmodels.ConfirmLink.objects.create(confirmation_string = random_str, entry = entry)
     subject = "Simons Freundebuch - confirmation"
     message = confirmation_link
-    from_mail = "freundebuch@simonkuhlo.de"
+    from_mail = settings.EMAIL_HOST_USER
     to_mail = author.email
     match language:
         case "de":

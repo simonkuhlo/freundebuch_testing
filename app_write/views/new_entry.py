@@ -5,7 +5,7 @@ from . import new_entry_helpers
 from .. import forms
 
 
-def interview(request, language, author, interview):
+def interview(request, lang, author, interview):
     questionformpairs = {}
     question_nr = 0
     for question in models.Question.objects.filter(interview=interview).order_by('sort_id'):
@@ -18,7 +18,7 @@ def interview(request, language, author, interview):
         
         form.instance.question = question
 
-        question_info = new_entry_helpers.get_question_info(language, question)
+        question_info = new_entry_helpers.get_question_info(lang, question)
         questionformpairs[question_nr] = {"info" : question_info, "form" : form}
         question_nr += 1
 
@@ -31,7 +31,7 @@ def interview(request, language, author, interview):
                 # [!] Error page does not exist yet.
                 render(request, 'app_write/new_entry/error')
         
-        entry = new_entry_helpers.create_boilerplate(questionformpairs, language, author, interview)
+        entry = new_entry_helpers.create_boilerplate(questionformpairs, lang, author, interview)
         
         for dict in questionformpairs.values():
             form = dict["form"]
@@ -43,12 +43,12 @@ def interview(request, language, author, interview):
             
     ctx = {
             "interview_id" : interview,
-            "language" : language,
+            "language" : lang,
             "questionformpairs" : questionformpairs
             }
     return render(request, 'app_write/interview.html', ctx)
 
-def create_author(request, language):
+def create_author(request, lang):
     
     form = forms.create_author(request.POST or None)
     

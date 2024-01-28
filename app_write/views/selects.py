@@ -9,7 +9,7 @@ from .. import forms
 
 
 #select a Language
-def select_language(request):
+def select_language(request, lang):
     
     form = forms.select_language(request.POST or None)
     
@@ -35,12 +35,12 @@ def select_language(request):
 
 
 #unused, currently only 1 interview for everyone
-def select_interview(request, language):
+def select_interview(request, lang):
     if request.method == 'POST':
         form = forms.select_interview(request.POST)
         if form.is_valid():
             interview = form.cleaned_data['field']
-            return redirect(f'/edit/new_entry/interview/{language}+{interview.id}')
+            return redirect(f'/edit/new_entry/interview/{lang}+{interview.id}')
         else:
             return redirect(f'/edit/error')
     form = forms.select_interview()

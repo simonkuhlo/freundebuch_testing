@@ -6,7 +6,7 @@
 
     <div class = "fc fc_column fc_center">
         <h2>Select {{select_name}}</h2>
-        <form action = "/edit/new_entry/" method="post">
+        <form action = {{request.get_full_path}} method="post">
             {% csrf_token %}
             <div class = "fc fc_column fc_center sf_box">
                 {{form.field}}

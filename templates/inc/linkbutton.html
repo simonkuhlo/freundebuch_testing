@@ -1,5 +1,7 @@
-<a href="{{btn_link}}">
+{% with url_name=btn_dest %}
+<a href="{% url url_name lang=request.resolver_match.kwargs.lang %}">
     <div class="btn">
         <p>{{btn_text}}</p>
     </div>
 </a>
+{% endwith %}

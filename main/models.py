@@ -87,7 +87,15 @@ class Answer(models.Model):
         return(str(self.entry))
 
 class SystemMessage(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique = True)
 
     value_en = models.TextField()
-    value_de = models.TextField()
+    value_de = models.TextField(blank=True)
+    
+    def __str__(self):
+        return(str(self.name))
+    
+    def save(self, *args, **kwargs):
+        if not self.value_de:
+            self.value_de = self.value_en
+        super().save(*args, **kwargs)
