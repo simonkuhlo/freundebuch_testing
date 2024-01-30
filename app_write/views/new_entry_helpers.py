@@ -3,10 +3,13 @@ from django.forms import modelform_factory
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 import string
 import random
 import numpy as np
 from main import models
+from main import language as translate
 from .. import models as localmodels
 
 class RequiredForm(djangoforms.ModelForm):
@@ -83,18 +86,20 @@ def create_boilerplate(bigdict, language, autohor_id, interview_id):
 
 def send_confirmation_email(entry, author, language):
     random_str = get_random_str(15)
-    confirmation_link = reverse("edit.new_entry.auth", kwargs={"auth_str":random_str,"lang":language})
     localmodels.ConfirmLink.objects.create(confirmation_string = random_str, entry = entry)
+    confirmation_link = reverse("edit.new_entry.auth", kwargs={"auth_str":random_str,"lang":language})
+    url = f"http://localhost:8000{confirmation_link}"
+    author_name = author.name
+    text1 = translate.Write.NewEntry.ConfirmMail.text_1(language)
+
+    html_message = render_to_string('app_write/auth/confirm_email.html', {'author_name' : author_name, 'text1' : text1, 'confirm_link' : url})
+    plain_message = strip_tags(html_message)
+    
     subject = "Simons Freundebuch - confirmation"
-    message = confirmation_link
     from_mail = settings.EMAIL_HOST_USER
     to_mail = author.email
-    match language:
-        case "de":
-            message = f"Hallo, {author.name}!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
-        case "en":
-            message = f"Hey, {author.name}!\nUm deinen Eintrag Sichtbar zu machen bzw. ihn verwalten zu können, besuche folgende Adresse:\n{confirmation_link}"
-    send_mail(subject, message, from_mail, [to_mail], fail_silently=False,)
+
+    send_mail(subject, plain_message, from_mail, [to_mail], fail_silently=False, html_message=html_message)
 
 
 def get_random_str(length):

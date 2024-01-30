@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from main import models
+from main import language
 from . import new_entry_helpers
 from .. import forms
 
@@ -37,8 +38,8 @@ def interview(request, lang, author, interview):
             form = dict["form"]
             form.instance.entry = entry
             form.save()
-       
         # [!] Success page does not exist yet.
+        
         return redirect(f'/edit/new_entry/success')
             
     ctx = {
@@ -46,6 +47,7 @@ def interview(request, lang, author, interview):
             "language" : lang,
             "questionformpairs" : questionformpairs
             }
+    
     return render(request, 'app_write/interview.html', ctx)
 
 def create_author(request, lang):
