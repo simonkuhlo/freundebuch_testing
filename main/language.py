@@ -17,8 +17,17 @@ class Write():
                 return text
 
             def question_text(language, question):
-        class ConfirmMail():
+                language_attr = f"value_{language}"
+                text = getattr(question, language_attr)
+                return text
             
+            def question_desc(language, question):
+                language_attr = f"description_{language}"
+                text = getattr(question, language_attr)
+                return text
+            
+        class ConfirmMail():
+
             def text_1(language):
                 text = Static.gettext(language, "write.new_entry.confirm_mail.text1")
                 return text

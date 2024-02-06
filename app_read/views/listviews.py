@@ -5,7 +5,7 @@ from main import models
 
 
 
-def home(request):
+def home(request, lang):
     all_entries = models.Entry.objects.filter(visible=True).order_by('created')
     ctx = {
         "all_entries" : all_entries

@@ -47,13 +47,8 @@ def get_fields_and_widgets_for_question_type(question_type):
 
 
 def get_question_info(language, question):
-    match language:
-        case "de" : 
-            question_text = question.value_de
-            question_desc = question.description_de
-        case "en" : 
-            question_text = question.value_en
-            question_desc = question.description_en
+    question_text = translate.Write.NewEntry.Interview.question_text(language, question)
+    question_desc = translate.Write.NewEntry.Interview.question_desc(language, question)
             
     info_dict = {
         "question_name" : question.name,

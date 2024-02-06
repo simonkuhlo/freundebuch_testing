@@ -1,4 +1,4 @@
-<a href="/view/entry/{{entry.id}}">
+<a href= "{% url 'view.view_entry' lang=request.resolver_match.kwargs.lang entryid=entry.id%}">
 <div class="fc fc_column bd bd_card as_pc" style="background-color : {{entry.bg_color}};">
 
 

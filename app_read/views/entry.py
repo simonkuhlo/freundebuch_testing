@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms import modelform_factory
 from main import models
 
-def main(request, entryid):
+def main(request, lang, entryid):
     entry = models.Entry.objects.get(id = entryid)
     language = entry.language
     all_answers = models.Answer.objects.filter(entry = entryid)
