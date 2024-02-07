@@ -5,22 +5,31 @@
 {% load static %}
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]view_entry.css' %}">
 
-<div class = "fc fc_row fc_center1">
-<div class = "page">
-
-    <img src="{{ profile_picture.url }}" alt="...">
-
-    <div class = "interview_container">
-
+<div class="fc fc_column fc_standard e_main">
+    <div class="e_author_name">
+        <h1>
+            Author Name
+        </h1>
+    </div>
+    <div class="fc fc_row fc_standard e_conatiner_info">
+        <div class="e_about_me">
+            <p>
+                About Me
+            </p>
+        </div>
+        <div class="e_profile_picture">
+            <p>
+                Picture
+            </p>
+        </div>
+    </div>
+    <div class="fc fc_column fc_standard e_container_all_questions">
         {% for sort_id, answer_info in normal_answers.items %}
 
             {% include "app_read/inc/view_entry/interview_items/normal_answer.html" %}
 
         {% endfor %}
-
     </div>
-
-</div>
 </div>
 
 {% endblock %}
