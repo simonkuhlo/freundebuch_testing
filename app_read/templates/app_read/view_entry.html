@@ -9,7 +9,7 @@
     <div class="fc fc_column fc_standard e_main">
         <div class="e_author_name">
             <h1>
-                Author Name
+                {{author_name}}
             </h1>
         </div>
         <div class="fc fc_row fc_standard e_conatiner_info">
@@ -18,10 +18,8 @@
                     About Me
                 </p>
             </div>
-            <div class="e_profile_picture">
-                <p>
-                    Picture
-                </p>
+            <div class="fc e_profile_picture">
+                <img src="{{ profile_picture.url }}" alt="...">
             </div>
         </div>
         <div class="fc fc_column fc_standard e_container_all_questions">

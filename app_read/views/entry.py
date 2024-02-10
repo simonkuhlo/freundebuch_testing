@@ -4,17 +4,17 @@ from main import models
 
 def main(request, lang, entryid):
     entry = models.Entry.objects.get(id = entryid)
+    author = entry.author
     language = entry.language
-    all_answers = models.Answer.objects.filter(entry = entryid)
-
+    all_answers = models.Answer.objects.filter(entry = entry)
 
     
     #normal questions and answers
     normal_answers = {} 
     profile_picture = None
+    author_name = author.name
 
     for answer in all_answers:
-        
         question = models.Question.objects.get(id = answer.question.id)
         if question.special == True:
             if question.name == "profile_picture":
@@ -39,7 +39,8 @@ def main(request, lang, entryid):
         normal_answers[question.sort_id] = item_info
 
     normal_answers = dict(sorted(normal_answers.items()))
-    ctx = { 
+    ctx = {
+        "author_name" : author_name, 
         "profile_picture" : profile_picture,
         "normal_answers" : normal_answers
         }
