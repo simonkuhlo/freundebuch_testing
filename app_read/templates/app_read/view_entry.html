@@ -23,27 +23,25 @@
             </div>
         </div>
         <div class="fc fc_column e_container_all_questions">
-            {% for sort_id, answer_info in normal_answers.items %}
+            {% for item in first_page_answers %}
 
                 {% include "app_read/inc/view_entry/interview_items/normal_answer.html" %}
 
             {% endfor %}
         </div>
     </div>
+    {% for page in answer_pages %}
     <div class="fc fc_column fc_standard e_page e_page_r">
         <div class="fc fc_column e_container_all_questions">
-            {% for sort_id, answer_info in normal_answers.items %}
+            {% for item in page %}
 
                 {% include "app_read/inc/view_entry/interview_items/normal_answer.html" %}
 
             {% endfor %}
-            {% for sort_id, answer_info in normal_answers.items %}
-
-                {% include "app_read/inc/view_entry/interview_items/normal_answer.html" %}
-
-            {% endfor %}
-        </div>
+        </div>    
     </div>
+    {% endfor %}
+
     
 </div>
 

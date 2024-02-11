@@ -33,11 +33,6 @@ def get_fields_and_widgets_for_question_type(question_type):
     fields = [question_type]
     
     match question_type:
-        case "answer_text":
-            widgets = { 'answer_text' : djangoforms.TextInput(),}
-        case "answer_longtext":  
-            fields = ['answer_text']
-            widgets = { 'answer_text' : djangoforms.Textarea(attrs={'cols': 80, 'rows': 20}),}
         case "answer_boolean":
             widgets = { 'answer_boolean' : djangoforms.CheckboxInput(),}
 

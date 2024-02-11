@@ -52,6 +52,7 @@ This file contains all special styling for the single entry view
 .e_about_me{
     width: 100%;
     padding: 10px;
+    background-color: rgba(0,0,0, 0.1);
     border-right: 1px solid black;
     border-left: 1px solid black;
     border-radius: 15px;

@@ -6,7 +6,7 @@ from ..models import ConfirmLink
 from main import models as mainmodels
 
 
-def check_auth(request, auth_str):
+def check_auth(request, lang, auth_str):
 
     try:
         model = ConfirmLink.objects.get(confirmation_string=auth_str)

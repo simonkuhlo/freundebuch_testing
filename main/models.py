@@ -42,7 +42,6 @@ class Entry(models.Model):
 
 question_type_choices = [
 ("answer_text", "text"),
-("answer_longtext", "longtext"),
 ("answer_image", "image"),
 ("answer_color", "color"),
 ("answer_boolean", "boolean"),
@@ -59,8 +58,11 @@ class Question(models.Model):
     description_en = models.CharField(max_length=500)
     
     type = models.CharField(max_length=100, choices=question_type_choices) #FileUpload, Interview, AboutMe
-    special = models.BooleanField(default=False) # clarify if special field like name, fav color, etc.
+     
     sort_id = models.SmallIntegerField()
+    
+    special = models.BooleanField(default=False)# clarify if special field like name, fav color, etc.
+    show_in_friendbook = models.BooleanField(default=True)
     required = models.BooleanField(default=False)
     
     class Meta:
@@ -78,7 +80,7 @@ class Answer(models.Model):
     answer_text = models.TextField(null=True, blank=True)
     answer_image = models.ImageField(upload_to="upload", default="no_image.webp", blank=True)
     answer_boolean = models.BooleanField(null=True, blank=True)
-    answer_color = colorfield.ColorField(default='#FF0000', format="rgb")
+    answer_color = colorfield.ColorField(default=None, format="rgb", null=True)
     
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
