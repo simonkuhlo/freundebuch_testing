@@ -52,7 +52,7 @@ def get_question_info(language, question):
     }    
     return info_dict
 
-def create_boilerplate(bigdict, language, autohor_id, interview_id):
+def create_boilerplate(bigdict, language, autohor_id):
     #check for crucial questions and get their values
     for dict in bigdict.values():
         questioninfo = dict["info"]
@@ -68,9 +68,11 @@ def create_boilerplate(bigdict, language, autohor_id, interview_id):
     
     # [!] Needs additions later. Check if author already exists, etc.
     author = models.Author.objects.get(id = autohor_id)
-    interview = models.Interview.objects.get(id = interview_id)
-    bg_color = normalize_color(color)
-    entry = models.Entry.objects.create(author = author, language = language, bg_color = bg_color, interview = interview, preview_image = preview_image)
+    entry = models.Entry.objects.create(
+        author = author, 
+        language = language, 
+        visible = False
+        )
     send_confirmation_email(entry, author, language)
     return entry
 

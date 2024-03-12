@@ -7,5 +7,5 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.listviews.home, name = "view.home"),
-    path('entry/<str:entryid>', views.entry.main, name = "view.view_entry")
+    path('entry/<str:entryid>', views.view_entry_book.main, name = "view.view_entry")
 ]

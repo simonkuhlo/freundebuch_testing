@@ -11,7 +11,7 @@ urlpatterns = [
     path('new_entry/', views.redirects.create_author, name = "edit.new_entry"),
     path('new_entry/create_author', views.new_entry.create_author, name = "edit.create_author"),
     #Interview form
-    path('new_entry/author=<str:author>+interview=<str:interview>', views.new_entry.interview, name = "edit.new_entry.interview"),
+    path('new_entry/author=<str:author>', views.new_entry.interview, name = "edit.new_entry.interview"),
 
     path('new_entry/auth/<str:auth_str>', views.auth.check_auth, name = "edit.new_entry.auth"),
     

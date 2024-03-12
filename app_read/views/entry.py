@@ -54,7 +54,7 @@ def main(request, lang, entryid):
         "answer_pages" : answer_pages,
         }
     
-    return render(request, 'app_read/view_entry.html', ctx)
+    return render(request, 'app_read/view_entry_book.html', ctx)
 
 def answers_per_page(answer_dict):
     print(answer_dict)

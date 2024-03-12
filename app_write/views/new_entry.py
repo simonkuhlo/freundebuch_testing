@@ -6,10 +6,10 @@ from . import new_entry_helpers
 from .. import forms
 
 
-def interview(request, lang, author, interview):
+def interview(request, lang, author):
     questionformpairs = {}
     question_nr = 0
-    for question in models.Question.objects.filter(interview=interview).order_by('sort_id'):
+    for question in models.Question.objects.all().order_by('sort_id'):
         form_class = new_entry_helpers.get_form(question)
         form = form_class(
             request.POST or None,
@@ -37,6 +37,7 @@ def interview(request, lang, author, interview):
         for dict in questionformpairs.values():
             form = dict["form"]
             form.instance.entry = entry
+            form.instance.normal = True
             form.save()
         # [!] Success page does not exist yet.
         

@@ -6,30 +6,7 @@
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/app_read/[AS]view_entry.css' %}">
 
 <div class="e_container_all_pages">
-    <div class="fc fc_column fc_standard e_page e_page_l">
-        <div class="e_author_name">
-            <h1>
-                {{author_name}}
-            </h1>
-        </div>
-        <div class="fc fc_row e_conatiner_info">
-            <div class="e_about_me">
-                <p>
-                    About Me
-                </p>
-            </div>
-            <div class="fc e_profile_picture">
-                <img src="{{ profile_picture.url }}" alt="...">
-            </div>
-        </div>
-        <div class="fc fc_column e_container_all_questions">
-            {% for item in first_page_answers %}
-
-                {% include "app_read/inc/view_entry/interview_items/normal_answer.html" %}
-
-            {% endfor %}
-        </div>
-    </div>
+    {% include "app_read/inc/view_entry/page_1.html" %}
     {% for page in answer_pages %}
     <div class="fc fc_column fc_standard e_page e_page_r">
         <div class="fc fc_column e_container_all_questions">

@@ -7,37 +7,12 @@ class Author(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
-
     def __str__(self):
         return(str(self.name))
 
-class Interview(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return(str(self.name))
    
     
-class Entry(models.Model):
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
-    interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
-    preview_image = models.ImageField(upload_to="upload", default="no_image.webp", blank=True)
-    bg_color = colorfield.ColorField(default='#FF0000')
-    language = models.CharField(max_length=50)
-    visible = models.BooleanField(default = False)
-    
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['-updated', 'created']
-        
-    def __str__(self):
-        return(str(self.author))
     
 
 question_type_choices = [
@@ -48,7 +23,6 @@ question_type_choices = [
 ]
 
 class Question(models.Model):
-    interview = models.ForeignKey(Interview, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
     
     value_de = models.CharField(max_length=200)
@@ -58,21 +32,29 @@ class Question(models.Model):
     description_en = models.CharField(max_length=500)
     
     type = models.CharField(max_length=100, choices=question_type_choices) #FileUpload, Interview, AboutMe
-     
-    sort_id = models.SmallIntegerField()
-    
-    special = models.BooleanField(default=False)# clarify if special field like name, fav color, etc.
-    show_in_friendbook = models.BooleanField(default=True)
     required = models.BooleanField(default=False)
     
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['interview', 'sort_id', 'name'], name='unique_question')
-        ]
+    sort_id = models.SmallIntegerField()
+    show_in_friendbook = models.BooleanField(default=True)
 
     def __str__(self):
         return(str(self.name))
-    
+
+
+class Entry(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
+    language = models.CharField(max_length=50)
+    visible = models.BooleanField(default = False)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-updated', 'created']
+        
+    def __str__(self):
+        return(str(self.author))
+
+
 class Answer(models.Model):
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
@@ -87,6 +69,12 @@ class Answer(models.Model):
     
     def __str__(self):
         return(str(self.entry))
+
+class EntryAttributes(models.Model):
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
+    featured_image = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, blank=True, default=None, related_name='featured_images')
+    featured_color = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, blank=True, default=None, related_name='featured_colors')
+
 
 class SystemMessage(models.Model):
     name = models.CharField(max_length=100, unique = True)
