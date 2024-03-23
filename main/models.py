@@ -71,13 +71,6 @@ class Answer(models.Model):
     def __str__(self):
         return(str(self.entry))
 
-class AnswerForm(ModelForm):
-    def __init__(question):
-        fields = question.type
-    class Meta:
-        model = Question
-        fields = ["name", "title", "birth_date"]
-
 
 class EntryAttributes(models.Model):
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
