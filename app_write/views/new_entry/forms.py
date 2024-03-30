@@ -12,8 +12,13 @@ class RequiredForm(ModelForm):
 
 def get_answerform(question):
     answerform = modelform_factory(
-        model = models.Answer,
+        models.Answer,
         fields = [question.type],
         )
-    answerform.instance.question = question
+    print(answerform.fields)
     return answerform
+
+class create_author(ModelForm):
+    class Meta:
+        model = models.Author
+        fields = "__all__"

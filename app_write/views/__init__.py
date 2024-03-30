@@ -1,5 +1,2 @@
-from . import new_entry
-from . import views
-from . import selects
-from . import auth
-from . import redirects
+from .authentication import views as authentication
+from .new_entry import views as new_entry
