@@ -64,7 +64,7 @@ This file contains all special styling for the single entry view
     background-color: rgba(0,0,0, 0.1);
     border-radius: 15px;
     padding: 5px;
-    height: 100%;
+    max-height: 200px;
 }
 
 .e_question_header{

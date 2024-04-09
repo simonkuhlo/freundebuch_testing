@@ -1,0 +1,17 @@
+{% for element in content %}
+<div class="e_container_question">
+    <div class="e_question_header">
+        <p>
+            {{element.question.value_de}}
+        </p>
+    </div>
+    <div class="e_question_answer">
+        <p>
+            {{element.answer.answer_text}}
+            {{element.answer.answer_image}}
+            {{element.answer.answer_color}}
+            {{element.answer.answer_boolean}}
+        </p>
+    </div>
+</div>
+{% endfor %}

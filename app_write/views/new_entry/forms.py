@@ -11,11 +11,7 @@ class RequiredForm(ModelForm):
 
 
 def get_answerform(question):
-    answerform = modelform_factory(
-        models.Answer,
-        fields = [question.type],
-        )
-    print(answerform.fields)
+    answerform = modelform_factory(models.Answer, fields = [question.type],)
     return answerform
 
 class create_author(ModelForm):

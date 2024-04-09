@@ -14,9 +14,9 @@ def create_author(request, lang):
 
 
 def interview(request, lang):
-    interview_elements = workers.get_interview_elements(lang)
+    pages = workers.get_all_interview_elements(lang)
     ctx = {
-        "interview_elements" : interview_elements,
+        "pages" : pages,
         "language" : lang,
     }
-    return render(request, 'app_write/interview.html', ctx)
+    return render(request, 'app_write/new_entry/interview.html', ctx)
